@@ -23,8 +23,8 @@ try:
     if val == 0 :
       raise ValueError('zero voltage reading')
     
-    Rt = 10000*(1-V/3.3)*3.3/V
-    T = 1.0/(1.0/298.15 + math.log(Rt/10000)/4050.0) + 25.0 - 298.15
+    Rt = 10000 * (3.3/V - 1)
+    T  = 1.0/(1.0/298.15 + math.log(Rt/10000)/4050.0) - 273.15
 
     print '{:.3f}'.format(V) + " V, " + '{:.0f}'.format(Rt) + " mA, " + '{:.1f}'.format(T) + " °C"
 
